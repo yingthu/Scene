@@ -73,6 +73,24 @@ public class Scene
 		//   The Transforms class (cs4620.framework) contains basic transformation matrices.
 		// * Use traverser.traverseNode() to traverse this node with nextTransform.
 		// * Recursively traverse the tree.
+		// Get parameters for the transform
+		Vector3f scale = node.scaling;
+		Vector3f rotation = node.rotation;
+		Vector3f translation = node.translation;
+		// Calculate the affine transformation in the form of TRzRyRxS
+		nextTransform.mul(Transforms.translate3DH(translation.x, translation.y, translation.z));
+		nextTransform.mul(Transforms.rotateAxis3DH(2, rotation.z));
+		nextTransform.mul(Transforms.rotateAxis3DH(1, rotation.y));
+		nextTransform.mul(Transforms.rotateAxis3DH(0, rotation.x));
+		nextTransform.mul(Transforms.scale3DH(scale.x, scale.y, scale.z));
+		// Traverse this node
+		traverser.traverseNode(node, nextTransform);
+		// Traverse child nodes
+		for(int i = 0; i < node.getChildCount(); i++)
+		{
+			SceneNode child = node.getSceneNodeChild(i);
+			traverseHelper(traverser, child, nextTransform);
+		}
 	}
 
 	public void rebuildMeshes(GL2 gl, float tolerance)
