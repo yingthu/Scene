@@ -26,7 +26,7 @@ public class Cylinder extends TriangleMesh
 		float[] x = new float[num];
 		float[] z = new float[num];
 		for (int i = 0; i < num; i++) {
-			x[i] = (float) (1.0 * Math.cos(theta));
+			x[i] = (float) (1.0 * Math.cos(-theta));
 			z[i] = (float) (1.0 * Math.sin(-theta));
 			theta += dtheta;
 		}

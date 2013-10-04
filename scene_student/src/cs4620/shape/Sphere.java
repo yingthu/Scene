@@ -33,8 +33,8 @@ public class Sphere extends TriangleMesh {
 				float phi = (float) (j * 2.0 * Math.PI / longitudes);
 				// Transform to xyz coordinates
 				// It's a unit sphere
-				float x = (float) (1.0*Math.sin(theta)*Math.cos(phi));
-				float y = (float) (1.0*Math.sin(phi)*Math.sin(theta));
+				float x = (float) (1.0*Math.sin(theta)*Math.cos(-phi));
+				float y = (float) (1.0*Math.sin(-phi)*Math.sin(theta));
 				float z = (float) (1.0*Math.cos(theta));
 				// Index for current vertex
 				int curIndex = j + longitudes * i;
