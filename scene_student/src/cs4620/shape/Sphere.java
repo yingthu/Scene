@@ -33,6 +33,7 @@ public class Sphere extends TriangleMesh {
 				float phi = (float) (j * 2.0 * Math.PI / longitudes);
 				// Transform to xyz coordinates
 				// It's a unit sphere
+				// Adjust phi to -phi here to fit the axis
 				float x = (float) (1.0*Math.sin(theta)*Math.cos(-phi));
 				float y = (float) (1.0*Math.sin(-phi)*Math.sin(theta));
 				float z = (float) (1.0*Math.cos(theta));
